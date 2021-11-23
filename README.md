@@ -111,10 +111,6 @@ This page shows detail of mountain with given `id`:
   - this altitude cannot be set higher than mountain's height (our climbers are basically stuck on the top :))
 - Redirect user back to mainpage afterwards
 
-- (BONUS - DO ONLY IF YOU HAVE TIME) There is a small chance the climber will fail and climbers get injured. In that case, his altitude will stay the same and he will become injured.
-  - Chance of injury is equal to mountain's level and it cannot go above 70%
-    - eg: chance on level 3 mountain is 3%, and 8% on level 8 mountain
-
 ### POST `/climbers/{id}/rescue/`
 
 - This endpoint will send a rescue helicopter towards the climber with given `id`
@@ -177,7 +173,7 @@ Write queries that:
 
 1. Select name and preferences of applicants under age of 30 from Hungary (using name of the country within query, and not the `country_id` value)
 2. Since we won't be offering Python courses in Hungary anymore, update preference of all hungarian applicants to `Unknown` (you can use explicit `country_id` value here)
-3. (BONUS) Show average age of Czech and Hungarian applicants such as: 
+3. Show average age of Czech and Hungarian applicants such as: 
 
 
 | country        | average_age |
