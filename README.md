@@ -29,8 +29,9 @@ We work with two different entities in this application:
 - Climber can be only on one mountain at a time, but multiple climbers can be
   present on one mountain
 
-- Mountain has a name, height and difficulty level (integer)
+- Mountain has a name and height
   - Each mountain also has a record about the date when first climber reached its top (can be empty, meaning noone has reached its top yet)
+  - Create few mountains in DB directly
 
 ## Frontend 
 
@@ -109,6 +110,10 @@ This page shows detail of mountain with given `id`:
 - Passed distance will be added to the climber's altitude
   - if climber reaches the top, check whether he/she is the first one to make it and store current date (on the mountain) if that is the case
   - this altitude cannot be set higher than mountain's height (our climbers are basically stuck on the top :))
+- There is a small chance the climber will fail and climbers get injured. In that case, his altitude will stay the same and he/she will become injured.
+  - Chance of injury is equal to mountain's level * 10 and it cannot go above 70%
+  - Level of mountain is computed from height as described above.
+    - eg: chance on level 3 mountain is 30%, and 70% on level 8 mountain
 - Redirect user back to mainpage afterwards
 
 ### POST `/climbers/{id}/rescue/`
