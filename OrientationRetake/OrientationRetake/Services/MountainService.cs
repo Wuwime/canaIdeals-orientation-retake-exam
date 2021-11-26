@@ -17,7 +17,7 @@ namespace OrientationRetake.Services
 
         public List<Mountain> GeatAllMountains()
         {
-            return DbContext.Mountains.ToList();
+            return DbContext.Mountains.Include(m => m.ClimbedClimbers).ToList();
         }
 
         public Mountain GetById(long id)
