@@ -17,10 +17,11 @@ namespace OrientationRetake.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    MountName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Height = table.Column<int>(type: "int", nullable: false),
-                    FirstClimbed = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    DifficultyLevel = table.Column<int>(type: "int", nullable: false),
+                    FirstClimbed = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,7 +40,6 @@ namespace OrientationRetake.Migrations
                     Nationality = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Altitude = table.Column<int>(type: "int", nullable: false),
-                    IsInjured = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     MountainId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>

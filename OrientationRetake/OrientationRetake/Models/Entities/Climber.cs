@@ -10,7 +10,7 @@ namespace OrientationRetake.Models.Entities
         public string  Name { get; set; }
         public string  Nationality { get; set; }
         public int Altitude { get; set; }
-        public bool IsInjured { get; set; }
+        public bool IsInjured = false;
         public long MountainId { get; set; }
         public Mountain Mountain { get; set; }
 
@@ -20,7 +20,6 @@ namespace OrientationRetake.Models.Entities
             Nationality = nationality;
             Altitude = altitude;
             MountainId = mountainId;
-            IsInjured = false;
         }
     }
 }

@@ -26,7 +26,7 @@
                 <td>@climber.Name</td>
                 <td>@climber.Nationality</td>
                 <td>
-                    <a href="~/mountains/{@climber.Mountain.Id}">@climber.Mountain.MountName</a>
+                    <a href="~/mountains/@climber.Mountain.Id">@climber.Mountain.MountName</a>
                 </td>
                 <td>@climber.Altitude</td>
                 <td>@climber.IsInjured</td>
@@ -43,7 +43,7 @@
 </table>
 
 <h4>Climb a Mountain</h4>
-<form asp-action="" asp-controller="Home" method="post">
+<form asp-action="ClimbersClimb" asp-controller="Home" method="post">
     <label for="climberId">Climber</label>
     <select name="climberId">
         @if (Model.AllClimbers is null)

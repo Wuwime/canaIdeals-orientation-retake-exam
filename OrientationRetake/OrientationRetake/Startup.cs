@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OrientationRetake.Database;
+using OrientationRetake.Models.Entities;
+using OrientationRetake.Services;
 
 namespace OrientationRetake
 {
@@ -26,6 +28,8 @@ namespace OrientationRetake
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<MountainService>();
+            services.AddTransient<ClimberService>();
             ConfigureDb(services);
         }
 

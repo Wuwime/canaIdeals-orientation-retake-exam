@@ -9,8 +9,8 @@ using OrientationRetake.Database;
 namespace OrientationRetake.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211126101809_updatemig")]
-    partial class updatemig
+    [Migration("20211126114131_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,6 @@ namespace OrientationRetake.Migrations
 
                     b.Property<int>("Altitude")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsInjured")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<long>("MountainId")
                         .HasColumnType("bigint");
@@ -62,7 +59,7 @@ namespace OrientationRetake.Migrations
                     b.Property<int>("Height")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("MountName")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

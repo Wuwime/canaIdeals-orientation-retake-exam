@@ -26,9 +26,6 @@ namespace OrientationRetake.Migrations
                     b.Property<int>("Altitude")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsInjured")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<long>("MountainId")
                         .HasColumnType("bigint");
 

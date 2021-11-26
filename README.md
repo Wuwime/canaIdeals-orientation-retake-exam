@@ -177,8 +177,16 @@ Given the following table named `countries`.
 Write queries that:
 
 1. Select name and preferences of applicants under age of 30 from Hungary (using name of the country within query, and not the `country_id` value)
+
+select name, preference from applicants join countries on country_id = countries.Id where applicants.age < 30 and countries.country = 'Hungary';
+
 2. Since we won't be offering Python courses in Hungary anymore, update preference of all hungarian applicants to `Unknown` (you can use explicit `country_id` value here)
+
+Update applicants set preference = 'Unknown' where country_id = '2';
+
 3. Show average age of Czech and Hungarian applicants such as: 
+
+Select countries.country, avg(applicants.age) from countries left join applicants on countries.id = applicants.country_id group by country
 
 
 | country        | average_age |

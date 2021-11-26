@@ -28,9 +28,10 @@ namespace OrientationRetake.Services
 
         public void AddClimber(string name, string nationality, Mountain mountain)
         {
-            Climber climber = new Climber(name, name, 0, mountain.Id);
-            mountain.ClimbedClimbers.Add(climber);
+            Climber climber = new Climber(name, nationality, 0, mountain.Id);
+            climber.Mountain = mountain;
             DbContext.Climbers.Add(climber);
+            mountain.ClimbedClimbers.Add(climber);
             DbContext.SaveChanges();
         }
 
@@ -44,6 +45,15 @@ namespace OrientationRetake.Services
             {
                 climber.IsInjured = true;
             }
+            else if(maxnum == 0)
+            {
+                climber.Altitude += distance;
+                if (climber.Altitude == climber.Mountain.Height)
+                {
+                    climber.Mountain.FirstClimbed = DateTime.Now;
+                }
+                DbContext.SaveChanges();
+            }
             else
             {
                 climber.Altitude += distance;
@@ -51,7 +61,6 @@ namespace OrientationRetake.Services
                 {
                     climber.Mountain.FirstClimbed = DateTime.Now;
                 }
-
                 DbContext.SaveChanges();
             }
         }
