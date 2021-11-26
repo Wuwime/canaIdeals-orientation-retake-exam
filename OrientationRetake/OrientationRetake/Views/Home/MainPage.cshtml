@@ -1,0 +1,90 @@
+@model OrientationRetake.Models.ViewModels.MainViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mountaineering</title>
+</head>
+<body>
+<h1>Mountaineering</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Nationality</th>
+        <th>Moutain</th>
+        <th>Altitude</th>
+        <th>Injured</th>
+
+    </tr>
+    @if (Model.AllClimbers is not null)
+    {
+
+        @foreach (var climber in Model.AllClimbers)
+        {
+            <tr>
+                <td>@climber.Name</td>
+                <td>@climber.Nationality</td>
+                <td><a href="~/">@climber.Mountain</a></td>
+                <td>@climber.Altitude</td>
+                <td>@climber.IsInjured</td>
+                
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>Nothing found</td>
+        </tr>
+    }
+    
+    <h4>Climb a Mountain</h4>
+    <form asp-action="" asp-controller="Home" method="">
+        <label for="climberId">Climber</label>
+        <select name="climberId">
+            @if (Model.AllClimbers is null)
+            {
+                <option value="">Please add a new climber</option>
+            }
+            else
+            {
+                <option value="">New Category</option>
+                @foreach (var climb in Model.AllClimbers)
+                {
+                    <option value="@climb.Id">@climb.Name</option>
+
+                }
+            }
+        </select>
+        <label for="distance">Distance</label>
+        <input type="text" name="distance" > 
+        <button type="submit">Submit</button>
+    </form>
+    
+    <h4>Add a new climber</h4>
+    <form asp-action="" asp-controller="Home" method="">
+        <label for="name">Name</label>
+        <input type="text" name="name">
+        <label for="nationality">Nationality</label>
+        <input type="text" name="nationality">
+        <label for="mountainId">Mountain</label>
+        <select name="mountainId">
+            @if (Model.AllMountains is null)
+            {
+                <option value="">No mountains</option>
+            }
+            else
+            {
+                @foreach (var mount in Model.AllMountains)
+                {
+                    <option value="@mount.Id">@mount.Name</option>
+                }
+            }
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</table>
+</body>
+</html>
