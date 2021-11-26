@@ -39,7 +39,9 @@ namespace OrientationRetake.Services
         {
             var climber = GetById(id);
             var rnd = new Random();
-            var maxnum = climber.Mountain.DifficultyLevel * 10;
+            MountainService service = new MountainService(DbContext);
+            var mountain = service.GetById(climber.MountainId);
+            var maxnum = mountain.DifficultyLevel * 10;
             var randNum = rnd.Next(1, maxnum);
             if (randNum % 2 == 0)
             {

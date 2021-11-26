@@ -9,7 +9,7 @@ using OrientationRetake.Database;
 namespace OrientationRetake.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211126114131_init")]
+    [Migration("20211126121414_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
