@@ -1,0 +1,41 @@
+@model OrientationRetake.Models.ViewModels.MainViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mountain detail</title>
+</head>
+<body>
+<h1>@Model.Mountain.MountName</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Nationality</th>
+        <th>Moutain</th>
+        <th>Altitude</th>
+        <th>Injured</th>
+
+    </tr>
+    @if (Model.Mountain.ClimbedClimbers is not null)
+    {
+
+        @foreach (var climber in Model.Mountain.ClimbedClimbers)
+        {
+            <tr>
+                <td>@climber.Name</td>
+                <td>@climber.Nationality</td>
+                <td>@climber.Altitude</td>
+                <td>@climber.IsInjured</td>
+                
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>Nothing found</td>
+        </tr>
+    }
+</table>
+</body>
+</html>

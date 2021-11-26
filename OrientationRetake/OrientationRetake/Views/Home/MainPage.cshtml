@@ -20,16 +20,17 @@
     </tr>
     @if (Model.AllClimbers is not null)
     {
-
         @foreach (var climber in Model.AllClimbers)
         {
             <tr>
                 <td>@climber.Name</td>
                 <td>@climber.Nationality</td>
-                <td><a href="~/">@climber.Mountain</a></td>
+                <td>
+                    <a href="~/mountains/{@climber.Mountain.Id}">@climber.Mountain.MountName</a>
+                </td>
                 <td>@climber.Altitude</td>
                 <td>@climber.IsInjured</td>
-                
+
             </tr>
         }
     }
@@ -39,52 +40,54 @@
             <td>Nothing found</td>
         </tr>
     }
-    
-    <h4>Climb a Mountain</h4>
-    <form asp-action="" asp-controller="Home" method="">
-        <label for="climberId">Climber</label>
-        <select name="climberId">
-            @if (Model.AllClimbers is null)
+</table>
+
+<h4>Climb a Mountain</h4>
+<form asp-action="" asp-controller="Home" method="post">
+    <label for="climberId">Climber</label>
+    <select name="climberId">
+        @if (Model.AllClimbers is null)
+        {
+            <option value="">Please add a new climber</option>
+        }
+        else
+        {
+            @foreach (var climb in Model.AllClimbers)
             {
-                <option value="">Please add a new climber</option>
-            }
-            else
-            {
-                <option value="">New Category</option>
-                @foreach (var climb in Model.AllClimbers)
+                if (climb.IsInjured == false)
                 {
                     <option value="@climb.Id">@climb.Name</option>
+                }
+            }
+        }
+    </select>
+    <label for="distance">Distance</label>
+    <input type="text" name="distance">
+    <button type="submit">Submit</button>
+</form>
 
-                }
-            }
-        </select>
-        <label for="distance">Distance</label>
-        <input type="text" name="distance" > 
-        <button type="submit">Submit</button>
-    </form>
-    
-    <h4>Add a new climber</h4>
-    <form asp-action="" asp-controller="Home" method="">
-        <label for="name">Name</label>
-        <input type="text" name="name">
-        <label for="nationality">Nationality</label>
-        <input type="text" name="nationality">
-        <label for="mountainId">Mountain</label>
-        <select name="mountainId">
-            @if (Model.AllMountains is null)
+<h4>Add a new climber</h4>
+<form asp-action="AddClimber" asp-controller="Home" method="post">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+    <label for="nationality">Nationality</label>
+    <input type="text" name="nationality">
+    <label for="mountainId">Mountain</label>
+    <select name="mountainId">
+        @if (Model.AllMountains is null)
+        {
+            <option value="">No mountains</option>
+        }
+        else
+        {
+            @foreach (var mount in Model.AllMountains)
             {
-                <option value="">No mountains</option>
+                <option value="@mount.Id">@mount.MountName</option>
             }
-            else
-            {
-                @foreach (var mount in Model.AllMountains)
-                {
-                    <option value="@mount.Id">@mount.Name</option>
-                }
-            }
-        </select>
-        <button type="submit">Submit</button>
-    </form>
-</table>
+        }
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>

@@ -13,5 +13,14 @@ namespace OrientationRetake.Models.Entities
         public bool IsInjured { get; set; }
         public long MountainId { get; set; }
         public Mountain Mountain { get; set; }
+
+        public Climber(string name, string nationality, int altitude, long mountainId)
+        {
+            Name = name;
+            Nationality = nationality;
+            Altitude = altitude;
+            MountainId = mountainId;
+            IsInjured = false;
+        }
     }
 }
